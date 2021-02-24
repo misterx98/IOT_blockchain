@@ -9,31 +9,32 @@ import datetime
 
 class ThreadBasket():
 	def __init__(self,idBasket):
-		self.broker_address="127.0.0.1" 
-		self.client = mqtt.Client("mqtt-spy") 
-		self.client.connect(self.broker_address) 
-		self.client.subscribe("plasticDelivery")
+		self.broker_address="127.0.0.1"  #assegnamento di indirizzo del broker di messagistica
+		self.client = mqtt.Client("mqtt-spy") # assegnamo un nome al client
+		self.client.connect(self.broker_address) # collegamento al broker
+		self.client.subscribe("plasticDelivery") #sottoscrizione al topic
 		self.idBasket = idBasket
 
-	def doDelivery(self,weight,idUser):
-		self.x = {
+	def doDelivery(self,weight,idUser): #deposito di un tot peso di plastica per utente
+		self.x = {                      #creazione del messaggio da spedire
 			"idUser" : idUser ,
 			"idBasket" : self.idBasket,
 			"date" : str(datetime.datetime.now()),
 			"weight" : weight
 		}
 		self.delivery = json.dumps(self.x)
-		self.client.publish("plasticDelivery",self.delivery)
+		self.client.publish("plasticDelivery",self.delivery) # pubblicazione del messaggio nella coda
+		                                                     # con topic "plasticDelivery"
 
 
 
 
 
-idBasket = "B001";
-t = ThreadBasket(idBasket);
+idBasket = "B001"
+t = ThreadBasket(idBasket); # crezione del basket
 print("Welcome to plastifFee Basket: "+idBasket)
 
-valore = "no";
+valore = "no"
 
 while True:
 
