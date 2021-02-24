@@ -1,0 +1,13 @@
+Questo è un parte di progetto di un sistema IOT & blockchain. 
+Le due classi PlasticFeeBasket e ListenerPlasticFee vanno a simulare un architettura client server distribuita per lo scambio di messaggi tramite il protocollo MQTT. 
+Le due classi vanno a simulare il collegamento di un dispositivo IOT, nelle vesti di un "cestino" in cui depositare la 
+plastica in cambio di una ricompensa in criptovalute. Il dispositivo IOT verrà opportunamente collegato alla blockchain PlasticFee in una prossima release del sistema
+che si occuperà di remunerare i clienti che contribuiscono allo smaltimento "green" della plastica.
+
+Funzionamento:
+
+Inizialmente bisogna avviare il broker di messaggistica.
+Lo sviluppo è stato fatto su un sistema linux.
+Per testare il funzionamento bisogna andare nella sotto cartella del progeto apache-activemq-5.16.1\bin\linux-x86-64 e lanciare il comando ./activemq start per avviare il broker di messaggistica.
+Dopodichè basterà tornare nella cartella principale e lanciare prima il listener: python3 PlastiFeeListener.py e poi il basket : python3 PlasticFeeBasket
+Infine il sistema sarà pronto per essere provato.
